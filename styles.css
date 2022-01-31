@@ -1,0 +1,182 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --hue: 200;
+  --saturation: 50%;
+  --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+  --background-color: hsl(var(--hue), var(--saturation), 20%);
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+.phone{
+  width: 25vw;
+  height: 90vh;
+  background-color: black;
+  border-radius: 4rem;
+  margin: 5vh 10vw;
+}
+
+.phone h4{
+  width: 100%;
+  margin: auto;
+  color: red;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+  padding: 1rem 0.5rem 0 0;
+}
+
+.phone p{
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.box {
+  position: absolute;
+  width: 90vh;
+  height: 90vh;
+  border: 4px solid var(--foreground-color);
+  left: 50vw;
+  top: 5vh;
+}
+
+/* How many seconds per day for each sensor */
+/* {'CCTV': 2434.0470742984985, 'Webcam': 1645.7142857142858, 'Phone_Mic': 3000.0} */
+
+.ellipse1 {
+  position: absolute;
+  left: 80vw;
+  top: 50vh;
+  width: 10vw;
+  height: 12vh;
+  border-radius: 50%;
+  background: grey;
+  opacity: 0.2;
+}
+
+.ellipse2 {
+  position: absolute;
+  left: 75vw;
+  top: 75vh;
+  width: 5vw;
+  height: 12vh;
+  border-radius: 50%;
+  background: grey;
+  opacity: 0.2;
+}
+
+.ellipse3 {
+  position: absolute;
+  left: 55vw;
+  top: 29vh;
+  width: 14vh;
+  height: 14vh;
+  border-radius: 50%;
+  background: grey;
+  opacity: 0.2;
+}
+
+.paddle {
+  --position: 50;
+  display: none;
+  position: absolute;
+  background-color: var(--foreground-color);
+  top: calc(var(--position) * 1vh);
+  transform: translateY(-50%);
+  width: 1vh;
+  height: 10vh;
+}
+
+.paddle.left {
+  left: 1vw;
+}
+
+.paddle.right {
+  right: 1vw;
+}
+
+.ball {
+  --x: 50;
+  --y: 50;
+
+  position: absolute;
+  background-color: var(--foreground-color);
+  left: calc(var(--x) * 1vw);
+  top: calc(var(--y) * 1vh);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vh;
+  height: 2.5vh;
+}
+
+.ball.video-call{
+  outline: 3px solid blue;
+}
+
+.ball.audio-call{
+  outline: 3px solid green;
+}
+
+.spot {
+  --x: 50;
+  --y: 50;
+
+  position: absolute;
+  opacity: 0.1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vh;
+  top: 13vh;
+  height: 2.5vh;
+}
+
+.red-spot{
+  background-color: red;
+  left: 55vw;
+}
+
+.green-spot{
+  background-color: green;
+  left: 58vw;
+}
+
+.blue-spot{
+  background-color: blue;
+  left: 61vw;
+}
+
+.spot.active{
+  opacity: 1;
+}
+
+
+
+
+.score {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 7vh;
+  color: var(--foreground-color);
+}
+
+.score>* {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 0 2vh;
+  margin: 1vh 0;
+  opacity: .5;
+}
+
+.score> :first-child {
+  text-align: right;
+  border-right: .5vh solid var(--foreground-color);
+}
