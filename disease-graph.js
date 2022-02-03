@@ -23,12 +23,17 @@ export function updateGraph() {
             width = disease.style.width
             width = parseInt(width.replace(/\D/g, ''));
             if (width < maxWidth && width > minWidth && (Math.round(Math.random() * changeChange) === 1)) {
+                disease.style.background = 'white'
                 change = Math.round(maths.randomNumberBetween(0, changeRate) - (changeRate / 2))
                 width += Math.round(maths.randomNumberBetween(0, changeRate) - (changeRate / 2))
-            } else if (width < minWidth && (Math.round(Math.random() * changeChange) === 1)) {
+            } else if (width < minWidth && (Math.round(Math.random() * changeChange) === 3)) {
                 width += Math.round(maths.randomNumberBetween(0, changeRate / 2))
-            } else if (width > maxWidth && (Math.round(Math.random() * changeChange) === 1)) {
+            } else if (width+1 > maxWidth && (Math.round(Math.random() * changeChange) === 2)) {
                 width -= Math.round(maths.randomNumberBetween(0, changeRate / 2))
+            }
+            if (width+1>maxWidth){
+                console.log('danger')
+                disease.style.background = 'red'
             }
             disease.style.width = toPx(width)
         }

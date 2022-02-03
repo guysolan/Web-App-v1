@@ -200,7 +200,10 @@ body {
 .disease-row div{
   background: white;
   height: 1rem;
-  
+}
+
+.disease-row.danger div{
+  background: red
 }
 
 
