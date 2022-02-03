@@ -1,56 +1,94 @@
-import Ball from "./Ball.js"
-import Sensor from "./sensor.js"
-import Memory from "./memory.js"
+import CCTV from "./CCTV.js"
+import Person from "./person.js"
+import * as maths from './maths.js'
+import * as diseases from './disease-graph.js'
 
-const ball = new Ball(document.getElementById("ball"))
+
+let me = new Person(document.getElementById("ball"))
+let people = [me]
+
+
+function morePeople(peeps, numberPeople){
+  for (let i=1; i<numberPeople;i++){
+
+    peeps[i] = new Person(document.getElementById(`ball-${i}`))
+  }
+}
+
+morePeople(people,14)
+
 
 const ellipse1 = document.getElementById("ellipse1")
 const ellipse2 = document.getElementById("ellipse2")
 const ellipse3 = document.getElementById("ellipse3")
 
 const red_spot = document.getElementById('red-spot')
-const green_spot = document.getElementById('blue-spot')
-const blue_spot = document.getElementById('green-spot')
 
-const blob_1 = new Sensor(ellipse1)
-const blob_2 = new Sensor(ellipse2)
-const blob_3 = new Sensor(ellipse3)
+const audio_memory = document.getElementById('audio-memory')
+const video_memory = document.getElementById('video-memory')
+const total_memory = document.getElementById('total-memory')
 
-const videoMemory = new Memory('Video')
-const audioMemory = new Memory('Audio')
+const heartRate = document.getElementById('heartRate')
 
-const terminal_para = document.getElementById('terminal-para')
-// const CCTVData = document.getElementById('cctv-data')
-const micData = document.getElementById('mic-data')
 
-const vidRate = 7 / 8;
-const audioRate = 0.32 / 8;
+
+const CCTV_1 = new CCTV(ellipse1)
+const CCTV_2 = new CCTV(ellipse2)
+const CCTV_3 = new CCTV(ellipse3)
+
+
+const allCCTV = [CCTV_1, CCTV_2, CCTV_3]
+
 
 let lastTime
 
+console.log(`Female? ${me.female}`)
+console.log(`Age ${me.getAge()} year old`)
+console.log(`HR ${me.heartRate} per minute`)
+console.log(`Temp ${me.bodyTemp} degrees C`)
+
+
 function update(time) {
+
+
   if (lastTime != null) {
+
     const delta = time - lastTime
-    ball.update(delta)
-    // computerPaddle.update(delta, ball.y)
+
+    // Change Background
     const hue = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue("--hue")
     )
 
-    checkCollision(blob_1, red_spot)
-    checkCollision(blob_2, red_spot)
-    checkCollision(blob_3, red_spot)
+    diseases.updateGraph()
 
-    // CCTV_blob.printDataFlow(micData)
-    // microphone_blob.printDataFlow(CCTVData,cctvDataStream)
+    people.forEach((person) => {
+      person.updatePosition(delta)
+    })
 
-    streamData(videoMemory, vidRate, red_spot)
-    streamData(audioMemory, audioRate, green_spot)
-    streamData(videoMemory, vidRate, blue_spot)
-    // Adjust audio rate for time not spent speaking on video call
-    streamData(audioMemory, audioRate / 5, blue_spot)
+
+    let videoInMemory = new TextEncoder().encode(me.phone.drive.video).length / 1000
+    let audioInMemory = new TextEncoder().encode(me.phone.drive.audio).length / 1000
+    let totalInMemory = videoInMemory + audioInMemory
+    videoInMemory = maths.twoDP(videoInMemory)
+    audioInMemory = maths.twoDP(audioInMemory)
+    totalInMemory = maths.twoDP(totalInMemory)
+    total_memory.innerText = `Total Data Stored: ${totalInMemory} Kb`
+    video_memory.innerText = `Video Data Stored: ${videoInMemory} Kb`
+    audio_memory.innerText = `Audio Data Stored: ${audioInMemory} Kb`
+
+
+    useCCTV(allCCTV, people)
+    onVideoCall(people)
+    onPhoneCall(people)
+
+    lightIcon(me, 'blue-spot', 'video-call')
+    lightIcon(me, 'red-spot', 'CCTV')
+    lightIcon(me, 'green-spot', 'phone-call')
+
 
     document.documentElement.style.setProperty("--hue", hue + delta * 0.01)
+
 
   }
 
@@ -58,41 +96,89 @@ function update(time) {
   window.requestAnimationFrame(update)
 }
 
-// function checkCollision(ob1, ob2){
-// //   let rect = ellipse.rect()
-// //   let rect = ellipse.rect()
+function onVideoCall(people) {
+  people.forEach((person) => {
+    if (person.personElement.classList.contains('video-call')) {
+      person.phone.drive.video += sendVideo(person.biomarkers())
+      person.phone.drive.audio += sendAudio(person.biomarkers())
+    }
+  })
+}
 
-//     if (rect.right >= ball.rect().left && rect.left <= ball.rect().right && rect.top <= ball.rect().bottom && rect.bottom >= ball.rect().top) {
-//     spot.classList.add('active')
-//     console.log(ellipse)
-//     terminal_para.innerText = `Spotted by CCTV Camera`
-//     }
-// }
+function onPhoneCall(people) {
+  people.forEach((person) => {
+    if (person.personElement.classList.contains('phone-call')) {
+      person.phone.drive.audio += sendAudio(person.biomarkers())
+    }
+  })
+}
 
-function checkCollision(ellipse, spot) {
-  let rect = ellipse.rect()
+function sendVideo(biomarkers) {
+  length = 400
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() *
+      charactersLength));
+  }
+  result += biomarkers
+  return result;
+}
 
-  if (rect.right >= ball.rect().left && rect.left <= ball.rect().right && rect.top <= ball.rect().bottom && rect.bottom >= ball.rect().top) {
+function sendAudio(biomarkers) {
+  length = 100
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() *
+      charactersLength));
+  }
+  result += biomarkers
+  return result;
+}
+
+
+function lightIcon(person, icon_id, sensor_classname) {
+  const spot = document.getElementById(icon_id)
+  if (person.personElement.classList.contains(sensor_classname)) {
     spot.classList.add('active')
-    console.log(ellipse)
-    terminal_para.innerText = `Spotted by CCTV Camera`
-
-
-
-  } else {
+  } else{
     spot.classList.remove('active')
-    terminal_para.innerText = ``
   }
 }
 
-function streamData(memory, rate, spot) {
-  if (spot.classList.contains('active')) {
-    console.log('Streaming')
 
-    memory.fill(rate)
-    console.log(`${memory.name} stored: ${memory.stored} Mb`)
-    return memory.stored
-  }
+
+function useCCTV(CCTV_cameras, people) {
+
+  people.forEach((person) => {
+    let person_rect = person.rect()
+
+    let CCTVs_active = 0
+    CCTV_cameras.forEach((CCTV) => {
+
+      CCTV.currentView = CCTV.newView()
+
+      let CCTV_rect = CCTV.rect()
+   
+      if (CCTV_rect.right >= person_rect.left && CCTV_rect.left <= person_rect.right && CCTV_rect.top <= person_rect.bottom && CCTV_rect.bottom >= person_rect.top) {
+
+        CCTVs_active += 1
+        person.personElement.classList.add('CCTV')
+        CCTV.spotPerson(person)
+        person.phone.drive.video += CCTV.currentView
+
+      } 
+      if (CCTVs_active === 0) {
+        person.personElement.classList.remove('CCTV')
+      }
+    })
+  })
 }
+
+
+
 
 window.requestAnimationFrame(update)

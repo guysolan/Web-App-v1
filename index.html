@@ -2,37 +2,212 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" type="module"></script>
-  <title>mila.health</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<script src="script.js" type="module"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+		rel="stylesheet">
+	<title>mila.health</title>
 </head>
 
 <body>
-  <!-- <div class="score">
+	<!-- <div class="score">
     <div id="player-score">0</div>
     <div id="computer-score">0</div>
   </div> -->
-  <div class="phone">
-    <h4>_> Terminal</h4>
-    <p id='terminal-para'></p>
-    <p id='cctv-data'></p>
-    <p id='mic-data'></p>
-  </div>
-  <div class="">
-    <div class="ball" id="ball"></div>
-    <div class="box" id="box"></div>
-    <div class="red-spot spot" id="red-spot"></div>
-    <div class="green-spot spot" id="green-spot"></div>
-    <div class="blue-spot spot" id="blue-spot"></div>
-    <div class="ellipse1" id="ellipse1"></div>
-    <div class="ellipse2" id="ellipse2"></div>
-    <div class="ellipse3" id="ellipse3"></div>
-    <div class="paddle left" id="player-paddle"></div>
-    <div class="paddle right" id="computer-paddle"></div>
-  </div>
+	<div class="phone">
+		<h4>_> Terminal</h4>
+		<div class="memory-wrap">
+			<p id='total-memory'></p>
+			<p id='video-memory'></p>
+			<p id='audio-memory'></p>
+		</div>
+		<div class="vitals-wrap">
+			<p id='vitals'>Vitals</p>
+			<div class="vitals-row">
+				<p>| Heart Rate</p>
+				<p id='heartRate'></p>
+			</div>
+			<div class="vitals-row">
+				<p>| BR</p>
+				<p id='breathingRate'></p>
+			</div>
+			<div class="vitals-row">
+				<p>| Temp</p>
+				<p id='temperature'></p>
+			</div>
+		</div>
+		<p id='risk'>Risk</p>
+
+		<div class="disease-wrap">
+
+			<div class="disease-row">
+				<p>Arthritis</p>
+				<div id='arthritis'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Stroke</p>
+				<div id='stroke'></div>
+			</div>
+			<div class="disease-row">
+				<p>Thrush</p>
+				<div id='thrush'></div>
+			</div>
+			<div class="disease-row">
+				<p>Alzhiemer's</p>
+				<div id='alzhiemers'></div>
+			</div>
+	
+			<div class="disease-row">
+				<p>Kidney stones</p>
+				<div id='kidney-stones'></div>
+			</div>
+			<div class="disease-row">
+				<p>Brain tumour</p>
+				<div id='brain-tumour'></div>
+			</div>
+			<div class="disease-row">
+				<p>Bronchitis</p>
+				<div id='bronchitis'></div>
+			</div>
+			<div class="disease-row">
+				<p>Chest infection</p>
+				<div id='chest-infection'></div>
+			</div>
+			<div class="disease-row">
+				<p>Cirrhosis</p>
+				<div id='cirrhosis'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Diabetes</p>
+				<div id='diabetes'></div>
+			</div>
+			<div class="disease-row">
+				<p>Appendicitis</p>
+				<div id='appendicitis'></div>
+			</div>
+	
+			<div class="disease-row">
+				<p>Dystonia</p>
+				<div id='dystonia'></div>
+			</div>
+			<div class="disease-row">
+				<p>Fibroids</p>
+				<div id='fibroids'></div>
+			</div>
+			<div class="disease-row">
+				<p>Flu</p>
+				<div id='flu'></div>
+			</div>
+			<div class="disease-row">
+				<p>Asthma</p>
+				<div id='asthma'></div>
+			</div>
+			<div class="disease-row">
+				<p>Crohn's disease</p>
+				<div id='crohns-disease'></div>
+			</div>
+			<div class="disease-row">
+				<p>HIV</p>
+				<div id='HIV'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Lyme disease</p>
+				<div id='lyme-disease'></div>
+			</div>
+			<div class="disease-row">
+				<p>Malaria</p>
+				<div id='malaria'></div>
+			</div>
+			<div class="disease-row">
+				<p>Meningitis</p>
+				<div id='meningitis'></div>
+			</div>
+			<div class="disease-row">
+				<p>Mumps</p>
+				<div id='mumps'></div>
+			</div>
+			<div class="disease-row">
+				<p>Ovarian cyst</p>
+				<div id='ovarian-cyst'></div>
+			</div>
+			<div class="disease-row">
+				<p>Pneumonia</p>
+				<div id='pneumonia'></div>
+			</div>
+			<div class="disease-row">
+				<p>Psoriasis</p>
+				<div id='psoriasis'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Yellow fever</p>
+				<div id='yellow-fever'></div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+	<div class="">
+		<div class="balls-wrap">
+			<div class="ball hidden" id="ball"></div>
+			<div class="ball hidden" id="ball-1"></div>
+			<div class="ball hidden" id="ball-2"></div>
+			<div class="ball hidden" id="ball-3"></div>
+			<div class="ball hidden" id="ball-4"></div>
+			<div class="ball hidden" id="ball-5"></div>
+			<div class="ball hidden" id="ball-6"></div>
+			<div class="ball hidden" id="ball-7"></div>
+			<div class="ball hidden" id="ball-8"></div>
+			<div class="ball hidden" id="ball-9"></div>
+			<div class="ball hidden" id="ball-10"></div>
+			<div class="ball hidden" id="ball-11"></div>
+			<div class="ball hidden" id="ball-12"></div>
+			<div class="ball hidden" id="ball-13"></div>
+			<div class="ball hidden" id="ball-14"></div>
+			<div class="ball hidden" id="ball-15"></div>
+			<div class="ball hidden" id="ball-16"></div>
+			<div class="ball hidden" id="ball-17"></div>
+			<div class="ball hidden" id="ball-18"></div>
+			<div class="ball hidden" id="ball-19"></div>
+			<div class="ball hidden" id="ball-20"></div>
+			<div class="ball hidden" id="ball-21"></div>
+			<div class="ball hidden" id="ball-22"></div>
+			<div class="ball hidden" id="ball-23"></div>
+			<div class="ball hidden" id="ball-24"></div>
+			<div class="ball hidden" id="ball-25"></div>
+			<div class="ball hidden" id="ball-26"></div>
+			<div class="ball hidden" id="ball-27"></div>
+			<div class="ball hidden" id="ball-28"></div>
+			<div class="ball hidden" id="ball-29"></div>
+			<div class="ball hidden" id="ball-30"></div>
+		</div>
+		<div class="box" id="box"></div>
+		<div class="red-spot spot" id="red-spot">
+			<img src="./images/video-camera.svg" alt="CCTV icon">
+		</div>
+		<div class="green-spot spot" id="green-spot">
+			<img src="./images/phone-call.svg" alt="video camera icon">
+		</div>
+		<div class="blue-spot spot" id="blue-spot">
+			<img src="./images/video-call.svg" alt="video camera icon">
+
+		</div>
+		<div class="ellipse1" id="ellipse1"></div>
+		<div class="ellipse2" id="ellipse2"></div>
+		<div class="ellipse3" id="ellipse3"></div>
+
+	</div>
 </body>
 
 </html>

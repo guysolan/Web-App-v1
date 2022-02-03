@@ -7,8 +7,24 @@ const start_V = 0.01
 export default class Ball {
   constructor(ballElem) {
     this.ballElem = ballElem
+
+    //Gender Randomly Assigned
+    if(Math.round(Math.random())===1){
+      this.male = true
+    } else {this.male = false}
+
+    //Age Randomly Assigned between 18 and 100
+    this.age = randomNumberBetween(18, 100)
+
+    //Heart Rate, Body Temp and Respitory Rate normally distrubuted and adjusted by age 
+    this.heartRate = gaussian(79.1,14.5)+(this.age-50)/(randomNumberBetween(3,8))
+    this.bodyTemp = gaussian(36.6,0.149) - ((this.age-50)/100)*(-0.021)
+    this.respitoryRate = gaussian()
+
     this.reset()
   }
+
+
 
   get x() {
     return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--x"))
@@ -79,6 +95,7 @@ export default class Ball {
     this.velocity = start_V
   }
 
+
   update(delta) {
 
     let maxV = 0.5
@@ -127,15 +144,27 @@ export default class Ball {
       changeY = randomNumberBetween(-changeF, 0) / closeTop
     }
 
-    this.direction.x += changeX
-    this.direction.y -= changeY
-
     this.call('video-call', blue_spot, 500, 80, true)
     this.call('audio-call', green_spot, 300, 80, false)
 
+    document.addEventListener('keydown', function (event) {
+      // changeY = 0
+      // changeX = 0
+
+
+      if (event.key == 'ArrowUp') {
+
+        changeY += 10
+      }
+    })
+
+
+    this.direction.x += changeX
+    this.direction.y -= changeY
 
     this.x += (this.direction.x) * this.velocity * delta
     this.y += (this.direction.y) * this.velocity * delta
+    // console.log(`this.y = ${this.y}`)
 
     this.velocity += VELOCITY_INCREASE * delta
 
@@ -144,4 +173,31 @@ export default class Ball {
 
 function randomNumberBetween(min, max) {
   return Math.random() * (max - min) + min
+}
+
+
+function gaussian(mean, stdev) {
+  let y2;
+  let use_last = false;
+  let y1;
+  if (use_last) {
+    y1 = y2;
+    use_last = false;
+  } else {
+    let x1, x2, w;
+    do {
+      x1 = 2.0 * Math.random() - 1.0;
+      x2 = 2.0 * Math.random() - 1.0;
+      w = x1 * x1 + x2 * x2;
+    } while (w >= 1.0);
+    w = Math.sqrt((-2.0 * Math.log(w)) / w);
+    y1 = x1 * w;
+    y2 = x2 * w;
+    use_last = true;
+  }
+
+  let retval = mean + stdev * y1;
+  if (retval > 0)
+    return retval;
+  return -retval;
 }
