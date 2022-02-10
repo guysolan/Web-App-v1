@@ -13,6 +13,41 @@
   --coding-blue: #00E7FF;
 }
 
+.background{
+  min-width: 100%;
+  max-height: 100%;
+  z-index: -10;
+  position: absolute;
+  top: 0;
+}
+
+.content {display: flex;
+align-items: center;
+}
+
+.blurb-wrap{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 15vw;
+  margin: 0 5vw 0 5vw;
+  color: white;
+
+  text-align: center;
+}
+
+.blurb-wrap h1{
+  width: 100%;
+  font-size: 1.75rem;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+
+
+}
+
 body {
   margin: 0;
   background-color: var(--background-color);
@@ -26,7 +61,7 @@ body {
   background-color: black;
   border: 2px solid rgb(36, 36, 36);
   border-radius: 4rem;
-  margin: 5vh 10vw;
+  margin: 5vh 0;
   font-family: 'Inconsolata', monospace;
 }
 
