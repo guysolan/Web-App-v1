@@ -20,147 +20,191 @@
 <body>
 	<img class="background" src="./images/background.png" alt="Background">
 	<div class="content">
-		<div class="blurb-wrap">
-			<h1 class="title">MILA.HEALTH</h1>
-		<p>This is a pop up to either ask a question or guide the user as to what is going on.</p>
+		<div class="clock">
+			<!-- <div id="sun-and-moon">
+				<div id="sun"></div>
+				<div id="moon"></div>
+			</div> -->
+			<div class="day-wrap">
+				<h4>Day&nbsp;</h4>
+				<h4 id="day">01</h4>
+
+			</div>
+		
+		</div>
+	<div class="blurb-wrap">
+		<h1 class="title">MILA.HEALTH</h1>
+		<!-- <p>This is a pop up to either ask a question or guide the user as to what is going on.</p> -->
+		<div id="all-messages">
+			<p id='intro-words-1' class="hidden">It is 2041 and AI has taken over healthcare.</p>
+			<p id='intro-words-2' class="hidden">At MILA.HEALTH we are doing our bit to try and harness the new AI
+				capabilities - without invading your privacy.</p>
+			<p id='video-call-message' class="hidden">You just started video calling.<br><br>Watch as your video and
+				audio data gets saved to your personal phone.</p>
+			<p id='phone-call-message' class="hidden">You just started answered your phone.<br><br>Watch as your
+				audio data gets saved to your personal phone.</p>
+			<p id='CCTV-message' class="hidden">You just entered a CCTV area.<br><br>Watch as your
+				video data gets saved to your personal phone.</p>
+
+			<p id='start-learning-1' class="hidden">It has been 24 hrs since insights were last generated.</p>
+			<p id='start-learning-2' class="hidden">First the saved audio data is used to check your BPM and breath
+				rate.</p>
+			<p id='start-learning-3' class="hidden">Next, the video data gives us blood pressure and body temperature.
+			</p>
+			<p id='start-learning-4' class="hidden">These vitals are added to the log of your vitals in phone memory.
+			</p>
+			<p id='start-learning-5' class="hidden">These trends in vitals, along with your medical history can be be
+				fed into the machine learning algorithm.</p>
+			<p id='start-learning-6' class="hidden">The algorithm then produces your updated propensity to a particular
+				disease.</p>
+
+			<p id='intro-more-people' class="hidden">Add more people to the mix to see how your care can
+				improve.
+			</p>
+			<p id='data-stored-message' class="hidden">Your data is stored until 24 hrs since your last check and your
+				phone procesor is idle.<br><br>Then, insights are generated.</p>
 
 		</div>
-
-		<div class="phone">
-			<h4>_> Terminal</h4>
-			<div class="memory-wrap">
-				<p id='total-memory'></p>
-				<p id='video-memory'></p>
-				<p id='audio-memory'></p>
-			</div>
-			<div class="vitals-wrap">
-				<p id='vitals'>Vitals</p>
-				<div class="vitals-row">
-					<p>| Heart Rate</p>
-					<p id='heartRate'></p>
-				</div>
-				<div class="vitals-row">
-					<p>| BR</p>
-					<p id='breathingRate'></p>
-				</div>
-				<div class="vitals-row">
-					<p>| Temp</p>
-					<p id='temperature'></p>
-				</div>
-			</div>
-			<p id='risk'>Risk</p>
-
-			<div class="disease-wrap">
-
-				<div class="disease-row">
-					<p>Arthritis</p>
-					<div id='arthritis'></div>
-				</div>
-
-				<div class="disease-row">
-					<p>Stroke</p>
-					<div id='stroke'></div>
-				</div>
-				<div class="disease-row">
-					<p>Thrush</p>
-					<div id='thrush'></div>
-				</div>
-				<div class="disease-row">
-					<p>Alzhiemer's</p>
-					<div id='alzhiemers'></div>
-				</div>
-
-				<div class="disease-row">
-					<p>Kidney stones</p>
-					<div id='kidney-stones'></div>
-				</div>
-				<div class="disease-row">
-					<p>Brain tumour</p>
-					<div id='brain-tumour'></div>
-				</div>
-				<div class="disease-row">
-					<p>Bronchitis</p>
-					<div id='bronchitis'></div>
-				</div>
-				<div class="disease-row">
-					<p>Chest infection</p>
-					<div id='chest-infection'></div>
-				</div>
-				<div class="disease-row">
-					<p>Cirrhosis</p>
-					<div id='cirrhosis'></div>
-				</div>
-
-				<div class="disease-row">
-					<p>Diabetes</p>
-					<div id='diabetes'></div>
-				</div>
-				<div class="disease-row">
-					<p>Appendicitis</p>
-					<div id='appendicitis'></div>
-				</div>
-
-				<div class="disease-row">
-					<p>Dystonia</p>
-					<div id='dystonia'></div>
-				</div>
-				<div class="disease-row">
-					<p>Fibroids</p>
-					<div id='fibroids'></div>
-				</div>
-				<div class="disease-row">
-					<p>Flu</p>
-					<div id='flu'></div>
-				</div>
-				<div class="disease-row">
-					<p>Asthma</p>
-					<div id='asthma'></div>
-				</div>
-				<div class="disease-row">
-					<p>Crohn's disease</p>
-					<div id='crohns-disease'></div>
-				</div>
-				<div class="disease-row">
-					<p>HIV</p>
-					<div id='HIV'></div>
-				</div>
-
-				<div class="disease-row">
-					<p>Lyme disease</p>
-					<div id='lyme-disease'></div>
-				</div>
-				<div class="disease-row">
-					<p>Malaria</p>
-					<div id='malaria'></div>
-				</div>
-				<div class="disease-row">
-					<p>Meningitis</p>
-					<div id='meningitis'></div>
-				</div>
-				<div class="disease-row">
-					<p>Mumps</p>
-					<div id='mumps'></div>
-				</div>
-				<div class="disease-row">
-					<p>Ovarian cyst</p>
-					<div id='ovarian-cyst'></div>
-				</div>
-				<div class="disease-row">
-					<p>Pneumonia</p>
-					<div id='pneumonia'></div>
-				</div>
-				<div class="disease-row">
-					<p>Psoriasis</p>
-					<div id='psoriasis'></div>
-				</div>
-
-				<div class="disease-row">
-					<p>Yellow fever</p>
-					<div id='yellow-fever'></div>
-				</div>
-			</div>
-
+		<div id='continue-btn' class="hidden continue-btn">
+			<h5>Continue</h5>
 		</div>
+	</div>
+
+	<div class="phone">
+		<h4>_> Terminal</h4>
+		<div class="memory-wrap">
+			<p id='total-memory'></p>
+			<p id='video-memory'></p>
+			<p id='audio-memory'></p>
+		</div>
+		<div class="vitals-wrap">
+			<p id='vitals'>Vitals</p>
+			<div class="vitals-row">
+				<p>| Heart Rate</p>
+				<p id='heartRate'></p>
+			</div>
+			<div class="vitals-row">
+				<p>| BR</p>
+				<p id='breathingRate'></p>
+			</div>
+			<div class="vitals-row">
+				<p>| Temp</p>
+				<p id='temperature'></p>
+			</div>
+		</div>
+		<p id='risk'>Risk</p>
+
+		<div class="disease-wrap">
+
+			<div class="disease-row">
+				<p>Arthritis</p>
+				<div id='arthritis'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Stroke</p>
+				<div id='stroke'></div>
+			</div>
+			<div class="disease-row">
+				<p>Thrush</p>
+				<div id='thrush'></div>
+			</div>
+			<div class="disease-row">
+				<p>Alzhiemer's</p>
+				<div id='alzhiemers'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Kidney stones</p>
+				<div id='kidney-stones'></div>
+			</div>
+			<div class="disease-row">
+				<p>Brain tumour</p>
+				<div id='brain-tumour'></div>
+			</div>
+			<div class="disease-row">
+				<p>Bronchitis</p>
+				<div id='bronchitis'></div>
+			</div>
+			<div class="disease-row">
+				<p>Chest infection</p>
+				<div id='chest-infection'></div>
+			</div>
+			<div class="disease-row">
+				<p>Cirrhosis</p>
+				<div id='cirrhosis'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Diabetes</p>
+				<div id='diabetes'></div>
+			</div>
+			<div class="disease-row">
+				<p>Appendicitis</p>
+				<div id='appendicitis'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Dystonia</p>
+				<div id='dystonia'></div>
+			</div>
+			<div class="disease-row">
+				<p>Fibroids</p>
+				<div id='fibroids'></div>
+			</div>
+			<div class="disease-row">
+				<p>Flu</p>
+				<div id='flu'></div>
+			</div>
+			<div class="disease-row">
+				<p>Asthma</p>
+				<div id='asthma'></div>
+			</div>
+			<div class="disease-row">
+				<p>Crohn's disease</p>
+				<div id='crohns-disease'></div>
+			</div>
+			<div class="disease-row">
+				<p>HIV</p>
+				<div id='HIV'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Lyme disease</p>
+				<div id='lyme-disease'></div>
+			</div>
+			<div class="disease-row">
+				<p>Malaria</p>
+				<div id='malaria'></div>
+			</div>
+			<div class="disease-row">
+				<p>Meningitis</p>
+				<div id='meningitis'></div>
+			</div>
+			<div class="disease-row">
+				<p>Mumps</p>
+				<div id='mumps'></div>
+			</div>
+			<div class="disease-row">
+				<p>Ovarian cyst</p>
+				<div id='ovarian-cyst'></div>
+			</div>
+			<div class="disease-row">
+				<p>Pneumonia</p>
+				<div id='pneumonia'></div>
+			</div>
+			<div class="disease-row">
+				<p>Psoriasis</p>
+				<div id='psoriasis'></div>
+			</div>
+
+			<div class="disease-row">
+				<p>Yellow fever</p>
+				<div id='yellow-fever'></div>
+			</div>
+		</div>
+
+	</div>
 	</div>
 	<div class="">
 		<div class="balls-wrap">

@@ -7,8 +7,7 @@
 :root {
   --hue: 200;
   --saturation: 50%;
-  --foreground-color: hsl(var(--hue), var(--saturation), 75%);
-  --background-color: hsl(var(--hue), var(--saturation), 20%);
+  --foreground-color: rgba(255,255,255,0.08);
   --coding-green: #25F284;
   --coding-blue: #00E7FF;
 }
@@ -24,6 +23,49 @@
 .content {display: flex;
 align-items: center;
 }
+
+.clock{
+  position: absolute;
+  bottom: 8vh;
+  right: 6vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.day-wrap{
+  max-height: 3vh;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border-top: 3px solid white;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+}
+/* #sun-and-moon{
+  display: flex;
+  transform: translateY(3rem) rotate(45deg) ; 
+}
+
+#sun,#moon{
+  border-radius: 2rem;
+  width: 20px;
+  height: 20px;
+  margin: 0.5rem 1rem;
+  z-index: -5;
+}
+
+#sun{
+  background-color: orange;
+}
+
+#moon{
+  background-color: lightgray;
+} */
 
 .blurb-wrap{
   display: flex;
@@ -84,11 +126,28 @@ body {
   width: 90vh;
   height: 90vh;
   border-radius: 2rem;
-  border: 4px solid var(--foreground-color);
   background-color: var(--foreground-color);
   left: 50vw;
   top: 5vh;
-  opacity: 0.1;
+}
+
+.continue-btn{
+  background-color: var(--foreground-color);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.continue-btn:hover{
+  outline: 2px solid white;
+}
+
+.continue-btn h5{
+  opacity: 1;
+  color: white;
+  font-size: 1.125rem;
+  margin: auto;
 }
 
 /* How many seconds per day for each sensor */
@@ -140,7 +199,7 @@ body {
   --x: 50;
   --y: 50;
   position: absolute;
-  background-color: var(--foreground-color);
+  background-color: rgba(255,255,255,0.7);
   left: calc(var(--x) * 1vw);
   top: calc(var(--y) * 1vh);
   border-radius: 50%;

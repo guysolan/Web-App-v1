@@ -3,7 +3,7 @@ import * as maths from './maths.js'
 
 const blue_spot = document.getElementById('blue-spot')
 const green_spot = document.getElementById('green-spot')
-const start_V = 0.01
+const start_V = 0.005
 
 const heartRate = document.getElementById('heartRate')
 const breathingRate = document.getElementById('breathingRate')
@@ -188,8 +188,14 @@ export default class Person {
             changeY = randomNumberBetween(-changeF, 0) / closeTop
         }
 
-        this.takeCall('video-call', blue_spot, 500, 80, true)
-        this.takeCall('phone-call', green_spot, 300, 80, false)
+        // -------------------------------------------------------------------------
+        // ------------------------Take Video and Phone Calls-----------------------
+        // -------------------------------------------------------------------------
+
+        this.takeCall('video-call', blue_spot, 1200, 200, true)
+        this.takeCall('phone-call', green_spot, 1000, 100, false)
+
+        // ------------------------------------------------------------------------
 
         this.direction.x += changeX
         this.direction.y -= changeY
